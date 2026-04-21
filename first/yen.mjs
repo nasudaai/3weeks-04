@@ -5,15 +5,19 @@ console.log(args);
 
 const data = {
   yen: args[0],
+  correctKeyStrokes: args[1],
 }
 
 console.log(data);
 
 console.log(args[0]);
-console.log(data.yen);
+console.log(data.yen, data.correctKeyStrokes);
+
 
 const type = typeof args[0];
 console.log(type);
 
 
-writeFileSync("out/yen.txt", args[0]);
+const dataArray = args.join(" ")
+const line = dataArray + "\n";
+writeFileSync("out/yen.txt", line );
