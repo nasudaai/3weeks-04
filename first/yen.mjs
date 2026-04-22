@@ -6,6 +6,7 @@ console.log(args);
 const data = {
   yen: args[0],
   correctKeyStrokes: args[1],
+  keysPerSecond: args[2] 
 }
 
 console.log(data);
