@@ -6,7 +6,10 @@ console.log(args);
 const data = {
   yen: args[0],
   correctKeyStrokes: args[1],
-  keysPerSecond: args[2] 
+  keysPerSecond: args[2],
+  missTypes: args[3],
+  cource: args[4],
+  date: new Date().toLocaleString()
 }
 
 console.log(data);
