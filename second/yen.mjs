@@ -13,8 +13,8 @@ const data = {
 
 
 
-const type = typeof args[0];
-console.log(type);
+//const type = typeof args[0];
+//console.log(type);
 
 
 const dataArray = args.join(" ")
