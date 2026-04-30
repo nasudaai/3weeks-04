@@ -2,6 +2,6 @@
 const now = new Date();
 
 // 2. 必要な時だけ変換して表示
-const displayTime = now.toLocaleTimeString();
+const displayTime = now.toLocaleString();
 
 console.log(displayTime);
