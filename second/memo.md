@@ -1,1 +1,41 @@
-[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;36r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[36;1H"# memo" [New][2;1H[94m~                                                                                         [3;1H~                                                                                         [4;1H~                                                                                         [5;1H~                                                                                         [6;1H~                                                                                         [7;1H~                                                                                         [8;1H~                                                                                         [9;1H~                                                                                         [10;1H~                                                                                         [11;1H~                                                                                         [12;1H~                                                                                         [13;1H~                                                                                         [14;1H~                                                                                         [15;1H~                                                                                         [16;1H~                                                                                         [17;1H~                                                                                         [18;1H~                                                                                         [19;1H~                                                                                         [20;1H~                                                                                         [21;1H~                                                                                         [22;1H~                                                                                         [23;1H~                                                                                         [24;1H~                                                                                         [25;1H~                                                                                         [26;1H~                                                                                         [27;1H~                                                                                         [28;1H~                                                                                         [29;1H~                                                                                         [30;1H~                                                                                         [31;1H~                                                                                         [32;1H~                                                                                         [33;1H~                                                                                         [34;1H~                                                                                         [35;1H~                                                                                         [m[36;73H0,0-1[9CAll[1;1H[?25h[?4m[36;1H[?2004l[>4;m[23;2t[23;1t[36;1H[K[36;1H[?1004l[?2004l[?1l>[?1049l[23;0;0t[>4;m# memo
+# memo
+
+```
+const fs = require('fs');
+const now = new Date();
+
+// --- 1. 日付用の「設計図」を作成 ---
+const dateOptions = {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit'
+};
+const dateFormatter = new Intl.DateTimeFormat('ja-JP', dateOptions);
+
+// --- 2. 時刻用の「設計図」を作成 ---
+const timeOptions = {
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false
+};
+const timeFormatter = new Intl.DateTimeFormat('ja-JP', timeOptions);
+
+// --- 3. それぞれの設計図を使って文字列に変換 ---
+let dateString = dateFormatter.format(now); // "2026/05/02"
+let timeString = timeFormatter.format(now); // "01:15:30"
+
+// --- 4. スラッシュをハイフンに置換（必要であれば） ---
+dateString = dateString.replace(/\//g, '-');
+
+// --- 5. 最後にすべてを連結して1行にする ---
+const finalTimestamp = `${dateString} ${timeString}`;
+const memoContent = process.argv[2] || "(空のメモ)";
+const logLine = `${finalTimestamp} - ${memoContent}\n`;
+
+// --- 6. ファイルに追記 ---
+fs.appendFileSync('memo.txt', logLine);
+
+console.log("Saved to memo.txt:");
+console.log(logLine.trim());
+```
