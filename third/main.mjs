@@ -6,6 +6,11 @@ console.log(mode);
 
 const data = {};
 
+if ( mode === "obj" ) {
+  obj[args[1]] = "value";
+  console.log(obj);
+}
+
 function main() {
   console.log("main");
 }
