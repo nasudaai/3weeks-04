@@ -16,7 +16,7 @@ const data = {
 //const type = typeof args[0];
 //console.log(type);
 
-
+args.push(data.date);
 const dataArray = args.join(" ")
 const line = dataArray + "\n";
 writeFileSync("out/yen.txt", line );
